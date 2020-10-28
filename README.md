@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e54b2167-63be-4b0e-8773-b72d72660f00/deploy-status)](https://app.netlify.com/sites/diary-app-demo/deploys)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ecd44881e1ea4364afe36a9f963ad44f)](https://www.codacy.com/manual/okezieobi/client-my-diary-demo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=okezieobi/client-my-diary-demo&amp;utm_campaign=Badge_Grade)
+
 ## Web client for Twitee, yet another Twitter clone 
 
 ## Live app
