@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import SigninLayout from '../layouts/Signin';
 
-export default function () {
+export default function Signin() {
   const history = useHistory();
 
   const handleSubmit = () => {

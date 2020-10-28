@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
-import BookIcon from '@material-ui/icons/BookOutlined';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Hidden from '@material-ui/core/Hidden';
@@ -61,10 +61,10 @@ export default function Home({
           <AppBar>
             <Toolbar>
               <Box className={classes.iconTitle}>
-                <BookIcon />
+                <TwitterIcon />
               </Box>
               <Hidden className={classes.title} implementation="css" xsDown>
-                <Typography variant="h6">MyDiary</Typography>
+                <Typography variant="h6">Twitee</Typography>
               </Hidden>
               <Link underline="none" href={href} color="inherit">
                 <Typography variant="h6">{headerLink}</Typography>

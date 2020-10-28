@@ -21,7 +21,7 @@ export default function Switches() {
           <Switch
             checked={state.checkedB}
             onChange={handleChange}
-            color="primary"
+            color="appTheme"
             name="checkedB"
             inputProps={{ 'aria-label': 'primary checkbox' }}
           />

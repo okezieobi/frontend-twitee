@@ -82,7 +82,7 @@ export default function Home() {
                 <Grid className={classes.gridHeight} alignItems="center" container>
                   <Grid item xs={12} sm={4}>
                     <Paper className={classes.description}>
-                      <Typography align="center" color="primary" variant="h4">My Diary App Demo</Typography>
+                      <Typography align="center" color="primary" variant="h4">Twitee</Typography>
                       <Typography align="center" color="primary" variant="h6">
                         Some really cool description of application,
                         this is just filler

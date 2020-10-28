@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function () {
+export default function ContentDash() {
   const history = useHistory();
   const classes = useStyles();
   const rowData = JSON.parse(localStorage.getItem('clickedRow'));
