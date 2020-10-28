@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a6b75ce6-01c3-4686-9cb5-3a8525228612/deploy-status)](https://app.netlify.com/sites/twitee-app/deploys)
+
 ## Web client for Twitee, yet another Twitter clone 
 
 ## Live app
