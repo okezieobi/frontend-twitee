@@ -41,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signup({
-  trackFname, trackUsername,
-  trackEmail, trackPassword, handleSubmit,
+  setFname,
+  setEmail, setPassword, handleSubmit,
+  formBtnState, signupErr,
 }) {
   const classes = useStyles();
 
@@ -67,20 +68,7 @@ export default function Signup({
                     id="fullName"
                     label="Full Name"
                     autoFocus
-                    onChange={trackFname}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    autoComplete="username"
-                    name="username"
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="username"
-                    label="Username"
-                    autoFocus
-                    onChange={trackUsername}
+                    onChange={({ target: { value } }) => setFname(value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -92,7 +80,7 @@ export default function Signup({
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    onChange={trackEmail}
+                    onChange={({ target: { value } }) => setEmail(value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -105,7 +93,7 @@ export default function Signup({
                     type="password"
                     id="password"
                     autoComplete="current-password"
-                    onChange={trackPassword}
+                    onChange={({ target: { value } }) => setPassword(value)}
                   />
                 </Grid>
               </Grid>
@@ -116,14 +104,20 @@ export default function Signup({
                 color="primary"
                 className={classes.submit}
                 onClick={handleSubmit}
+                disabled={formBtnState}
               >
-                Submit
+                {formBtnState ? 'Sending ...' : 'Submit'}
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
                   <Link href="/signin" variant="body2">
                     Already have an account? Sign in
                   </Link>
+                </Grid>
+              </Grid>
+              <Grid container justify="center">
+                <Grid item>
+                  <Typography color="secondary">{signupErr}</Typography>
                 </Grid>
               </Grid>
             </form>
@@ -138,17 +132,19 @@ export default function Signup({
 }
 
 Signup.propTypes = {
-  trackFname: PropTypes.func,
-  trackUsername: PropTypes.func,
-  trackEmail: PropTypes.func,
-  trackPassword: PropTypes.func,
+  setFname: PropTypes.func,
+  setEmail: PropTypes.func,
+  setPassword: PropTypes.func,
   handleSubmit: PropTypes.func,
+  formBtnState: PropTypes.bool,
+  signupErr: PropTypes.string,
 };
 
 Signup.defaultProps = {
-  trackFname: undefined,
-  trackUsername: undefined,
-  trackEmail: undefined,
-  trackPassword: undefined,
+  setFname: undefined,
+  setEmail: undefined,
+  setPassword: undefined,
   handleSubmit: undefined,
+  formBtnState: false,
+  signupErr: undefined,
 };
