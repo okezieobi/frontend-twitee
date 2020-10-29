@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Signin({
-  trackUsernameEmail, trackPassword, handleSubmit,
+  setEmail, setPassword, signinErr,
+  handleSubmit, formBtnState,
 }) {
   const classes = useStyles();
 
@@ -71,7 +72,7 @@ export default function Signin({
                 name="email-username"
                 autoComplete="email-username"
                 autoFocus
-                onChange={trackUsernameEmail}
+                onChange={({ target: { value } }) => setEmail(value)}
               />
               <TextField
                 variant="outlined"
@@ -83,7 +84,7 @@ export default function Signin({
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={trackPassword}
+                onChange={({ target: { value } }) => setPassword(value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -96,8 +97,9 @@ export default function Signin({
                 color="primary"
                 className={classes.submit}
                 onClick={handleSubmit}
+                disabled={formBtnState}
               >
-                Submit
+                {formBtnState ? 'Sending ...' : 'Submit'}
               </Button>
               <Grid container>
                 <Grid item xs>
@@ -111,10 +113,15 @@ export default function Signin({
                   </Link>
                 </Grid>
               </Grid>
+              <Grid container justify="center">
+                <Grid item>
+                  <Typography color="error">{signinErr}</Typography>
+                </Grid>
+              </Grid>
             </form>
           </Paper>
           <Box mt={8}>
-            <Copyright yourWebsite="My Diary App Demo" />
+            <Copyright yourWebsite="Twitee" />
           </Box>
         </Container>
       </AuthHeader>
@@ -123,13 +130,17 @@ export default function Signin({
 }
 
 Signin.propTypes = {
-  trackUsernameEmail: PropTypes.func,
-  trackPassword: PropTypes.func,
+  setEmail: PropTypes.func,
+  setPassword: PropTypes.func,
   handleSubmit: PropTypes.func,
+  formBtnState: PropTypes.bool,
+  signinErr: PropTypes.string,
 };
 
 Signin.defaultProps = {
-  trackUsernameEmail: undefined,
-  trackPassword: undefined,
+  setEmail: undefined,
+  setPassword: undefined,
   handleSubmit: undefined,
+  formBtnState: false,
+  signinErr: undefined,
 };

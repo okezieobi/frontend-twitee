@@ -117,13 +117,13 @@ export default function Signup({
               </Grid>
               <Grid container justify="center">
                 <Grid item>
-                  <Typography color="secondary">{signupErr}</Typography>
+                  <Typography color="error">{signupErr}</Typography>
                 </Grid>
               </Grid>
             </form>
           </Paper>
           <Box mt={5}>
-            <Copyright yourWebsite="My Diary App Demo" />
+            <Copyright yourWebsite="Twitee" />
           </Box>
         </Container>
       </AuthHeader>

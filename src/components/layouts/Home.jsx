@@ -210,7 +210,7 @@ export default function Home() {
             </Grid>
           </Box>
           <Box mt={5}>
-            <Copyright yourWebsite="My Diary App Demo" />
+            <Copyright yourWebsite="Twitee" />
           </Box>
         </Container>
       </AuthHeader>
