@@ -17,37 +17,35 @@ export default function Signup() {
   const history = useHistory();
 
   const handleSubmit = () => {
-    try {
-      if (!btnState) {
-        setBtnState(true);
-      }
-      const inputData = {
-        name: fname,
-        email,
-        password,
-      };
-      const reqURL = process.env.NODE_ENV === 'production' ? 'https://twitee-app.herokuapp.com/api/v1/auth/signup' : 'http://localhost:5000/api/v1/auth/signup';
-      fetch(reqURL, {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        method: 'POST',
-        body: JSON.stringify(inputData),
-      }).then((response) => response.json())
-        .then(({ error, token }) => {
-          if (error) {
-            if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
-            else if (error.message) setSignupErr(error.message);
-            setBtnState(false);
-          } else {
-            localStorage.setItem('token', token);
-            history.push('/home');
-          }
-        });
-    } catch (err) {
-      console.log(err);
-      setBtnState(false);
+    if (!btnState) {
+      setBtnState(true);
     }
+    const inputData = {
+      name: fname,
+      email,
+      password,
+    };
+    const reqURL = process.env.NODE_ENV === 'production' ? 'https://twitee-app.herokuapp.com/api/v1/auth/signup' : 'http://localhost:5000/api/v1/auth/signup';
+    fetch(reqURL, {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      method: 'POST',
+      body: JSON.stringify(inputData),
+    }).then((response) => response.json())
+      .then(({ error, token }) => {
+        if (error) {
+          if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
+          else if (error.message) setSignupErr(error.message);
+          setBtnState(false);
+        } else {
+          localStorage.setItem('twitee-app-token', token);
+          history.push('/home');
+        }
+      }).catch((err) => {
+        console.log(err);
+        setBtnState(false);
+      });
   };
 
   return (

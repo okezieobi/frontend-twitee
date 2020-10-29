@@ -20,7 +20,7 @@ export default function ContentDash() {
   const rowData = JSON.parse(localStorage.getItem('clickedRow'));
 
   const handleEditClick = () => {
-    history.push('/home/entry/edit');
+    history.push('/home/twit/edit');
   };
 
   return (

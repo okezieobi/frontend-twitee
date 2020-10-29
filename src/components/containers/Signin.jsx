@@ -13,36 +13,34 @@ export default function Signin() {
   const history = useHistory();
 
   const handleSubmit = () => {
-    try {
-      if (!btnState) {
-        setBtnState(true);
-      }
-      const inputData = {
-        email,
-        password,
-      };
-      const reqURL = process.env.NODE_ENV === 'production' ? 'https://twitee-app.herokuapp.com/api/v1/auth/login' : 'http://localhost:5000/api/v1/auth/login';
-      fetch(reqURL, {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        method: 'POST',
-        body: JSON.stringify(inputData),
-      }).then((response) => response.json())
-        .then(({ error, token }) => {
-          if (error) {
-            if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
-            else if (error.message) setSignupErr(error.message);
-            setBtnState(false);
-          } else {
-            localStorage.setItem('token', token);
-            history.push('/home');
-          }
-        });
-    } catch (err) {
-      console.log(err);
-      setBtnState(false);
+    if (!btnState) {
+      setBtnState(true);
     }
+    const inputData = {
+      email,
+      password,
+    };
+    const reqURL = process.env.NODE_ENV === 'production' ? 'https://twitee-app.herokuapp.com/api/v1/auth/login' : 'http://localhost:5000/api/v1/auth/login';
+    fetch(reqURL, {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      method: 'POST',
+      body: JSON.stringify(inputData),
+    }).then((response) => response.json())
+      .then(({ error, data: { token } }) => {
+        if (error) {
+          if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
+          else if (error.message) setSignupErr(error.message);
+          setBtnState(false);
+        } else {
+          localStorage.setItem('twitee-app-token', token);
+          history.push('/home');
+        }
+      }).catch((err) => {
+        console.log(err);
+        setBtnState(false);
+      });
   };
 
   return (

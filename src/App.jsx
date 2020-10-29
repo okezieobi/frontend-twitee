@@ -21,13 +21,13 @@ export default function App() {
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route path="/home/entry/edit">
+        <Route path="/home/twit/edit">
           <EditForm />
         </Route>
-        <Route path="/home/entry/compose">
+        <Route path="/home/twit/compose">
           <ComposeForm />
         </Route>
-        <Route path="/home/entry">
+        <Route path="/home/twit">
           <ContentDash />
         </Route>
         <Route path="/home">

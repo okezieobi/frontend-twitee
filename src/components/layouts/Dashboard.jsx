@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Dashboard({
-  window, children, homeSelect, profileSelect,
+  window, children, homeSelect, profileSelect, fetchErr,
 }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -79,7 +79,7 @@ function Dashboard({
   };
 
   const handleCompose = () => {
-    history.push('/home/entry/compose');
+    history.push('/home/twit/compose');
   };
 
   const handleDrawerToggle = () => {
@@ -142,7 +142,7 @@ function Dashboard({
             <MenuIcon />
           </IconButton>
           <Typography className={classes.appTitle} variant="h6" align="center" noWrap>
-            My Diary App Demo
+            Twitee
           </Typography>
         </Toolbar>
       </AppBar>
@@ -179,6 +179,7 @@ function Dashboard({
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Typography color="error">{fetchErr}</Typography>
         {children}
       </main>
     </div>
@@ -194,12 +195,14 @@ Dashboard.propTypes = {
   children: PropTypes.node.isRequired,
   homeSelect: PropTypes.bool,
   profileSelect: PropTypes.bool,
+  fetchErr: PropTypes.string,
 };
 
 Dashboard.defaultProps = {
   window: undefined,
   homeSelect: false,
   profileSelect: false,
+  fetchErr: undefined,
 };
 
 export default Dashboard;

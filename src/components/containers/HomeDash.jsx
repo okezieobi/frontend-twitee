@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState, useEffect } from 'react';
+import { config } from 'dotenv';
 import Hidden from '@material-ui/core/Hidden';
 import { useHistory } from 'react-router-dom';
 import MUIDataTable from 'mui-datatables';
@@ -7,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Dashboard from '../layouts/Dashboard';
 import HomeFab from '../layouts/Fab';
 import DashboardBG from '../../images/Home_Dash.svg';
+
+config();
 
 const useStyles = makeStyles(() => ({
   backdrop: {
@@ -21,40 +25,57 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function HomeDash() {
+  const [tableData, setData] = useState([]);
+  const [fetchErr, setFetchErr] = useState('');
   const history = useHistory();
   const classes = useStyles();
 
   const handleRowClick = (row = []) => {
     const clickedRow = JSON.stringify(row);
     localStorage.setItem('clickedRow', clickedRow);
-    history.push('/home/entry');
+    history.push('/home/twit');
   };
 
   const handleFabClick = () => {
-    history.push('/home/entry/compose');
+    history.push('/home/twit/compose');
   };
 
-  const columns = ['title', 'body', 'created on', 'updated on'];
-  const data = [
-    ['test title 1', 'test body 1', 'created on 1', 'updated on 1'],
-    ['test title 2', 'test body 2', 'created on 2', 'updated on 2'],
-    ['test title 3', 'test body 3', 'created on 3', 'updated on 3'],
-    ['test title 4', 'test body 4', 'created on 4', 'updated on 4'],
-  ];
+  const columns = ['name', 'content', 'created on'];
   const options = {
     filterType: 'checkbox',
     onRowClick: (rowData) => handleRowClick(rowData),
   };
 
+  const reqURL = process.env.NODE_ENV === 'production' ? 'https://twitee-app.herokuapp.com/api/v1/twits/all' : 'http://localhost:5000/api/v1/twits/all';
+  const token = localStorage.getItem('twitee-app-token');
+  useEffect(() => {
+    fetch(reqURL, {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        token,
+      },
+      method: 'GET',
+    }).then((response) => response.json())
+      .then(({ error, data }) => {
+        if (error) {
+          if (error.messages) setFetchErr(error.messages[error.messages.length - 1].msg);
+          else if (error.message) setFetchErr(error.message);
+        } else {
+          const rowData = data.twits.rows.map((obj) => Object.values(obj).slice(0, 3));
+          setData(rowData);
+        }
+      }).catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
-      <Dashboard homeSelect>
+      <Dashboard fetchErr={fetchErr} homeSelect>
         <div className={classes.backdrop}>
           <MUIDataTable
-            title="Entries"
+            title="Twits"
             columns={columns}
             options={options}
-            data={data}
+            data={tableData}
           />
           <Hidden implementation="css" smUp>
             <HomeFab handleClick={handleFabClick} />
