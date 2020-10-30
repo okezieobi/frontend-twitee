@@ -33,13 +33,17 @@ export default function Signup() {
       method: 'POST',
       body: JSON.stringify(inputData),
     }).then((response) => response.json())
-      .then(({ error, token }) => {
+      .then(({ error, data }) => {
         if (error) {
-          if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
-          else if (error.message) setSignupErr(error.message);
-          setBtnState(false);
+          if (error.messages) {
+            setSignupErr(error.messages[error.messages.length - 1].msg);
+            setBtnState(false);
+          } else if (error.message) {
+            setSignupErr(error.message);
+            setBtnState(false);
+          }
         } else {
-          localStorage.setItem('twitee-app-token', token);
+          localStorage.setItem('twitee-app-token', data.token);
           history.push('/home');
         }
       }).catch((err) => {

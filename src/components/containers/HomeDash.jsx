@@ -61,8 +61,10 @@ export default function HomeDash() {
           if (error.messages) setFetchErr(error.messages[error.messages.length - 1].msg);
           else if (error.message) setFetchErr(error.message);
         } else {
-          const rowData = data.twits.rows.map((obj) => Object.values(obj).slice(0, 3));
-          setData(rowData);
+          const rowData = data.twits.rows.map(
+            ({ User: { name }, content, createdAt }) => ({ name, content, createdAt }),
+          );
+          setData(Object.values(rowData));
         }
       }).catch((err) => console.log(err));
   }, []);

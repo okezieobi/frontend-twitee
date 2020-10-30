@@ -92,7 +92,7 @@ function Dashboard({
         <Toolbar>
           <Hidden className={classes.appTitle} implementation="css" smUp>
             <Typography variant="h6" align="center" noWrap>
-              My Diary App Demo
+              Twitee
             </Typography>
           </Hidden>
           <Hidden className={classes.appTitle} implementation="css" xsDown>

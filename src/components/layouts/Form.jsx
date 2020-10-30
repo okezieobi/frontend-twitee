@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Form({ title, body }) {
+export default function Form({ body }) {
   const classes = useStyles();
 
   return (
@@ -24,22 +24,8 @@ export default function Form({ title, body }) {
             margin="normal"
             required
             fullWidth
-            id="entry-title"
-            label="Title"
-            name="entry-title"
-            autoComplete="entry-title"
-            autoFocus
-            defaultValue={title}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
             id="entry-body"
-            label="Body"
+            label="Content"
             name="entry-body"
             autoComplete="entry-body"
             multiline
@@ -71,11 +57,9 @@ export default function Form({ title, body }) {
 }
 
 Form.propTypes = {
-  title: PropTypes.string,
   body: PropTypes.string,
 };
 
 Form.defaultProps = {
-  title: '',
   body: '',
 };

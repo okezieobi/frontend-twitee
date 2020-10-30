@@ -9,7 +9,7 @@ export default function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [btnState, setBtnState] = useState(false);
-  const [signinErr, setSignupErr] = useState('');
+  const [signinErr, setSigninErr] = useState('');
   const history = useHistory();
 
   const handleSubmit = () => {
@@ -28,13 +28,17 @@ export default function Signin() {
       method: 'POST',
       body: JSON.stringify(inputData),
     }).then((response) => response.json())
-      .then(({ error, data: { token } }) => {
+      .then(({ error, data }) => {
         if (error) {
-          if (error.messages) setSignupErr(error.messages[error.messages.length - 1].msg);
-          else if (error.message) setSignupErr(error.message);
-          setBtnState(false);
+          if (error.messages) {
+            setSigninErr(error.messages[error.messages.length - 1].msg);
+            setBtnState(false);
+          } else if (error.message) {
+            setSigninErr(error.message);
+            setBtnState(false);
+          }
         } else {
-          localStorage.setItem('twitee-app-token', token);
+          localStorage.setItem('twitee-app-token', data.token);
           history.push('/home');
         }
       }).catch((err) => {
