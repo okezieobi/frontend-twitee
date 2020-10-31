@@ -58,13 +58,18 @@ export default function HomeDash() {
     }).then((response) => response.json())
       .then(({ error, data }) => {
         if (error) {
-          if (error.messages) setFetchErr(error.messages[error.messages.length - 1].msg);
-          else if (error.message) setFetchErr(error.message);
+          if (error.messages) {
+            setFetchErr(error.messages[error.messages.length - 1].msg);
+            history.push('/signin');
+          } else if (error.message) {
+            setFetchErr(error.message);
+            history.push('/signin');
+          }
         } else {
           const rowData = data.twits.rows.map(
-            ({ User: { name }, content, createdAt }) => ({ name, content, createdAt }),
+            ({ User: { name }, content, createdAt }) => ([name, content, createdAt]),
           );
-          setData(Object.values(rowData));
+          setData(rowData);
         }
       }).catch((err) => console.log(err));
   }, []);

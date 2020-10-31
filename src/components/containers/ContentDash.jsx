@@ -29,30 +29,23 @@ export default function ContentDash() {
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Typography variant="h4" gutterBottom>
-              Title:
+              Name:
               <br />
               {rowData ? rowData[0] : ''}
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body1" gutterBottom>
-              Body:
+              Content:
               <br />
               {rowData ? rowData[1] : ''}
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Typography variant="body1" gutterBottom>
               Created On:
               <br />
               {rowData ? rowData[2] : ''}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="body1" gutterBottom>
-              Updated On:
-              <br />
-              {rowData ? rowData[3] : ''}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -62,7 +55,7 @@ export default function ContentDash() {
               color="primary"
               onClick={handleEditClick}
             >
-              Edit
+              Comment
             </Button>
           </Grid>
           <Grid item xs={6}>
