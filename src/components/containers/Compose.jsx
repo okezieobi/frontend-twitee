@@ -58,6 +58,7 @@ export default function Compose() {
         handleSubmit={handleSubmit}
         setContent={setContent}
         contentErr={contentErr}
+        formBtnState={btnState}
       />
     </Dashboard>
   );

@@ -40,7 +40,8 @@ export default function HomeDash() {
     history.push('/home/twit/compose');
   };
 
-  const columns = ['name', 'content', 'created on'];
+  const columns = ['name', 'content', 'created on', { name: 'id', options: { display: false } }];
+
   const options = {
     filterType: 'checkbox',
     onRowClick: (rowData) => handleRowClick(rowData),
@@ -67,7 +68,9 @@ export default function HomeDash() {
           }
         } else {
           const rowData = data.twits.rows.map(
-            ({ User: { name }, content, createdAt }) => ([name, content, createdAt]),
+            ({
+              User: { name }, content, createdAt, id,
+            }) => ([name, content, createdAt, id]),
           );
           setData(rowData);
         }
