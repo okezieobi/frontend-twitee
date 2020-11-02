@@ -48,7 +48,7 @@ export default function Form({
             disabled={formBtnState}
             onClick={handleSubmit}
           >
-            {formBtnState ? 'Sending ...' : 'Submit'}
+            {formBtnState ? 'Sending' : 'Submit'}
           </Button>
         </Grid>
         <Grid item xs={6}>

@@ -58,7 +58,7 @@ export default function Home({
       <CssBaseline />
       <ElevationScroll window={window}>
         <Slide in>
-          <AppBar>
+          <AppBar color="secondary">
             <Toolbar>
               <Box className={classes.iconTitle}>
                 <TwitterIcon />

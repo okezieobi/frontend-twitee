@@ -19,7 +19,7 @@ export default function FloatingActionButtons({ handleClick }) {
 
   return (
     <div className={classes.root}>
-      <Fab onClick={handleClick} color="primary">
+      <Fab onClick={handleClick} color="secondary">
         <EditIcon />
       </Fab>
     </div>

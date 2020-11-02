@@ -22,5 +22,5 @@ Copyright.propTypes = {
 };
 
 Copyright.defaultProps = {
-  yourWebsite: '',
+  yourWebsite: 'Twitee App',
 };

@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 
-import AuthHeader from './Auth';
+import AuthHeader from './Root';
 import Copyright from './Copyright';
 import SignupBG from '../../images/Signup.svg';
 
@@ -101,7 +101,7 @@ export default function Signup({
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={classes.submit}
                 onClick={handleSubmit}
                 disabled={formBtnState}
@@ -123,7 +123,7 @@ export default function Signup({
             </form>
           </Paper>
           <Box mt={5}>
-            <Copyright yourWebsite="Twitee" />
+            <Copyright />
           </Box>
         </Container>
       </AuthHeader>

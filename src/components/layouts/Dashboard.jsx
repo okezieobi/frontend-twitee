@@ -99,7 +99,7 @@ function Dashboard({
             <Button
               fullWidth
               variant="contained"
-              color="primary"
+              color="secondary"
               onClick={handleCompose}
             >
               Compose
@@ -130,7 +130,7 @@ function Dashboard({
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed" color="secondary" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"

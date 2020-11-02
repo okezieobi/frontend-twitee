@@ -22,7 +22,7 @@ import Copyright from './Copyright';
 import HomeBGOne from '../../images/Home_1.svg';
 import HomeBGTwo from '../../images/Home_2.svg';
 import HomeBGThree from '../../images/Home_3.svg';
-import AuthHeader from './Auth';
+import AuthHeader from './Root';
 
 const useStyles = makeStyles((theme) => ({
   iconPadding: {
@@ -210,7 +210,7 @@ export default function Home() {
             </Grid>
           </Box>
           <Box mt={5}>
-            <Copyright yourWebsite="Twitee" />
+            <Copyright />
           </Box>
         </Container>
       </AuthHeader>
