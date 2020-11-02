@@ -13,7 +13,7 @@ import Paper from '@material-ui/core/Paper';
 
 import AuthHeader from './Root';
 import Copyright from './Copyright';
-import SignupBG from '../../images/Signup.svg';
+import SignupBG from '../../images/BG_1.svg';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

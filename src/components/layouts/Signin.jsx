@@ -15,7 +15,7 @@ import Paper from '@material-ui/core/Paper';
 
 import AuthHeader from './Root';
 import Copyright from './Copyright';
-import SigninBG from '../../images/Signin.svg';
+import SigninBG from '../../images/BG_3.svg';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

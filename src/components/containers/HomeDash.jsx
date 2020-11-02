@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Dashboard from '../layouts/Dashboard';
 import HomeFab from '../layouts/Fab';
-import DashboardBG from '../../images/Home_Dash.svg';
+import DashboardBG from '../../images/BG_2.svg';
 
 config();
 
@@ -70,7 +70,7 @@ export default function HomeDash() {
           const rowData = data.twits.rows.map(
             ({
               User: { name }, content, createdAt, id,
-            }) => ([name, content, createdAt, id]),
+            }) => ([name, content, Date(createdAt), id]),
           );
           setData(rowData);
         }
