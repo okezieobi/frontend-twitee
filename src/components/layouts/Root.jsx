@@ -67,7 +67,7 @@ export default function Home({
                 <Typography variant="h6">Twitee</Typography>
               </Hidden>
               <Link underline="none" href={href} color="inherit">
-                <Typography variant="h6">{headerLink}</Typography>
+                {headerLink}
               </Link>
             </Toolbar>
           </AppBar>
